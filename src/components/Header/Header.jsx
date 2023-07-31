@@ -1,6 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { UserIcon } from "@heroicons/react/24/outline";
+
 const Header = () => {
   return (
     <div className="navbar bg-base-100">
@@ -29,7 +30,6 @@ const Header = () => {
             <li>
               <a className="Home">Home</a>
             </li>
-
             <li>
               <a className="Cities">Cities</a>
             </li>
@@ -37,17 +37,20 @@ const Header = () => {
         </div>
         <a className="navLogo">My Tinerary</a>
       </div>
-      <div className="navbar-end hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a className="home">Home</a>
-          </li>
-          <li>
-            <a className="cities">Cities</a>
-          </li>
-        </ul>
+      <div className="navbar-end">
+        <div className="hidden lg:flex">
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <a className="home">Home</a>
+            </li>
+            <li>
+              <a className="cities">Cities</a>
+            </li>
+          </ul>
+        </div>
         <a className="btn btn-primary login">
-          <UserIcon className="h-5 w-5 flex-none" />Login
+          <UserIcon className="h-5 w-5 flex-none" />
+          Login
         </a>
       </div>
     </div>
