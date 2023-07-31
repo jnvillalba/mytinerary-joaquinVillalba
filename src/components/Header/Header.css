@@ -1,7 +1,6 @@
 .navLogo {
   color: #1c1c1c;
   font-size: 32px;
-  font-family: "Segoe UI";
   font-weight: 700;
   word-wrap: break-word;
 }
@@ -10,7 +9,11 @@
 .cities {
   color: #1c1c1c;
   font-size: 24px;
-  font-family: "Segoe UI";
   font-weight: 700;
   word-wrap: break-word;
+}
+
+.btnLogin {
+  color: #fff !important;
+  background-color: #4f46e5 !important ;
 }

@@ -5,7 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {fontFamily: {
+      sans: ['Segoe UI', 'Arial', 'sans-serif'],
+    },},
   },
   plugins: [require("daisyui")],
   daisyui: {

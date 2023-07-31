@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import { UserIcon } from "@heroicons/react/24/outline";
+import { UserIcon } from "@heroicons/react/24/solid";
 
 const Header = () => {
   return (
@@ -48,7 +48,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-primary login">
+        <a className="btn btn-primary btnLogin">
           <UserIcon className="h-5 w-5 flex-none" />
           Login
         </a>
