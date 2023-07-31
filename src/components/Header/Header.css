@@ -1,0 +1,68 @@
+.Header {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    
+  }
+  
+  .MyTinerary {
+    color: #1C1C1C;
+    font-size: 32px;
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .Nav {
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    display: flex;
+  }
+  
+  .Home,
+  .Cities {
+    color: #1C1C1C;
+    font-size: 24px;
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
+  .Login {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background: #4F46E5;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  
+  .HeroiconsOutlineUser {
+    width: 21px;
+    height: 20px;
+    position: relative;
+  }
+  
+  .Vector {
+    width: 13.12px;
+    height: 16.25px;
+    left: 3.94px;
+    top: 1.88px;
+    position: absolute;
+    background: white;
+  }
+  
+  .LoginText {
+    color: white;
+    font-size: 24px;
+    font-family: 'Segoe UI';
+    font-weight: 700;
+    word-wrap: break-word;
+  }
+  
