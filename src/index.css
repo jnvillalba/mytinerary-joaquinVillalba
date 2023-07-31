@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-prima {
+  color: #fff !important;
+  background-color: #4f46e5 !important ;
+}

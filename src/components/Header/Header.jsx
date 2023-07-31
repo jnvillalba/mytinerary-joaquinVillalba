@@ -48,7 +48,7 @@ const Header = () => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-primary btnLogin">
+        <a className="btn btn-prima">
           <UserIcon className="h-5 w-5 flex-none" />
           Login
         </a>
