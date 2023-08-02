@@ -1,8 +1,13 @@
 import React from "react";
-import { Home } from "../components/Home/Home";
+import Main from "../layouts/Main";
+import Hero from "../components/Hero/Hero";
 
 const HomePage = () => {
-  return <Home />;
+  return (
+    <Main>
+      <Hero />
+    </Main>
+  );
 };
 
 export default HomePage;

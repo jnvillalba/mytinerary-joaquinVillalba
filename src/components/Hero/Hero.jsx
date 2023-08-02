@@ -1,6 +1,6 @@
 import React from "react";
 import "./Hero.css";
-export const Hero = () => {
+const Hero = () => {
   return (
     <div className="hero hero-container lg:p-24 xl:p-32 min-h-screen">
       <div className="hero-content lg:px-0 flex-col lg:flex-row-reverse">
@@ -21,3 +21,5 @@ export const Hero = () => {
     </div>
   );
 };
+
+export default Hero
