@@ -2,8 +2,8 @@ import React from "react";
 import "./Hero.css";
 export const Hero = () => {
   return (
-    <div className="hero hero-container min-h-screen ">
-      <div className="hero-content flex-col lg:flex-row-reverse">
+    <div className="hero hero-container lg:p-24 xl:p-32 min-h-screen">
+      <div className="hero-content lg:px-0 flex-col lg:flex-row-reverse">
         <img
           src="/placeholder.png"
           className="max-w-sm w-full rounded-lg shadow-2xl"

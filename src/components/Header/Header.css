@@ -13,7 +13,6 @@
   word-wrap: break-word;
 }
 
-.navbar{
-    padding: 32px 218px 0px 219px !important;
-    background-color: #EBEBEB !important;
-  }
+.navbar {
+  background-color: #ebebeb !important;
+}
