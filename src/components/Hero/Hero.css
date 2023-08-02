@@ -4,8 +4,11 @@
   font-size: 24px;
   font-weight: 400;
   line-height: normal;
+  align-items: flex-start;
+  padding-bottom: 10px;
 }
 
 .hero-container {
   background-color: #ebebeb;
 }
+
