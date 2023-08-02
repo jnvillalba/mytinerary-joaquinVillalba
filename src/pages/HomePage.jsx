@@ -1,16 +1,8 @@
 import React from "react";
-import Header from "../components/Header/Header";
-import { Hero } from "../components/Hero/Hero";
-import { Footer } from "../components/Footer/Footer";
+import { Home } from "../components/Home/Home";
 
 const HomePage = () => {
-  return (
-    <>
-      <Header />
-      <Hero />
-      <Footer/>
-    </>
-  );
+  return <Home />;
 };
 
 export default HomePage;

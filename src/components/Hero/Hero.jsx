@@ -2,10 +2,10 @@ import React from "react";
 import "./Hero.css";
 export const Hero = () => {
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero hero-container min-h-screen ">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <img
-          src="/public/placeholder.png"
+          src="/placeholder.png"
           className="max-w-sm w-full rounded-lg shadow-2xl"
         />
         <div>

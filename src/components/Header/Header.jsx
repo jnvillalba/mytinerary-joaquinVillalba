@@ -4,7 +4,7 @@ import { UserIcon } from "@heroicons/react/24/solid";
 
 const Header = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-transparent">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
