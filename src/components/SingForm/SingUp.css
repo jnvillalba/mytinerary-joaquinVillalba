@@ -7,33 +7,87 @@
   align-items: center;
 }
 
-.left-side {
-}
-
-.right-side {
-  widht: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
-  border-radius: 0.3125rem;
-  
-}
-
-.right-side-top {
-    display: flex;
-  flex-direction: column;
-  padding: 5rem 4rem 6rem 4rem;
+/*LEFT*/
+.signUp__logo {
+  color: #fff;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .social-sing {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
+
+/*RIGHT*/
+.right-side {
+  background-color: #fff;
+  border-radius: 0.3125rem;
+}
+
+.right-side-top {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem 0rem 4rem;
+}
+
 .step-text {
   align-self: start;
   font-size: 1rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.right-side-text {
+  color: #1c1c1c;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: normal;
+}
+
+.right-side-text h5 {
+  font-weight: 600;
+}
+
+.right-side-text p {
+  font-weight: 400;
+}
+
+.sign-in {
+  color: #1473e6;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.navLogo,
+.home,
+.cities {
+  color: #fff;
+}
+
+.singup-socials {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.right-side-bottom {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 4rem 0rem 4rem;
+  gap: 1.875rem;
+}
+
+.submit-button-input {
+  padding: 0.625rem 1.25rem;
+  gap: 0.625rem;
+  border-radius: 0.3125rem;
 }

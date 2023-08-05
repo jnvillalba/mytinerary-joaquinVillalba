@@ -2,7 +2,7 @@ import React from "react";
 import "./SingUp.css";
 const SingUp = () => {
   return (
-    <div className="singForm__container overflow-hidden">
+    <div className="singForm__container overflow-hidden lg:px-20 xl:px-32 py-5">
       <div className="left-side h-full text-white">
         <h6 className="signUp__logo">My Tinerary</h6>
       </div>
@@ -10,11 +10,19 @@ const SingUp = () => {
       <div className="right-side">
         <div className="right-side-top">
           <div className="step-text">step 1 of 2</div>
-          <div className="text-zinc-900 text-3xl font-semibold py-8">
+          <div className="text-zinc-900 text-3xl font-semibold py-4">
             Create account
           </div>
-          <div className="social-sing">Facebook Google</div>
-          <div className="w-96 h-9 py-2.5 justify-between items-center gap-2.5 inline-flex">
+          <div className="singup-socials">
+            <button className="btn btn-circle btn-outline">
+              <img src="/i-google.svg" alt="fb-logo" />
+            </button>
+            <button className="btn btn-circle">
+              <img src="/i-fb.svg" alt="fb-logo" />
+            </button>
+          </div>
+
+          <div className="w-96 h-9 py-4 justify-between items-center gap-2.5 inline-flex">
             <div className="w-48 h-px opacity-50 border border-zinc-900 border-opacity-60"></div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -32,36 +40,40 @@ const SingUp = () => {
             <div className="w-48 h-px opacity-50 border border-zinc-900 border-opacity-60"></div>
           </div>
         </div>
-        <div className="form-inputs relative mb-5">
-          <input
-            type="text"
-            placeholder="User name"
-            className="w-full h-10 border-2 border-gray-300 rounded-md pl-10 focus:border-black focus:outline-none"
-          />
-        </div>
-        <div className="form-inputs relative mb-5">
-          <input
-            type="email"
-            placeholder="Email"
-            autoComplete="chrome-off"
-            className="w-full h-10 border-2 border-gray-300 rounded-md pl-10 focus:border-black focus:outline-none"
-          />
-        </div>
-        <div className="form-inputs relative mb-5">
-          <input
-            id="password_input"
-            className="password-input w-full h-10 border-2 border-gray-300 rounded-md pl-10 focus:border-black focus:outline-none"
-            autoComplete="chrome-off"
-            type="password"
-            placeholder="Password"
-          />
-        </div>
+        <div className="right-side-bottom">
+          <div className="right-side-text">
+            <h5>Sign up with email</h5>
+            <p>
+              Already have an account?{" "}
+              <a href="/sign-in" className="sign-in">
+                Sign in
+              </a>
+            </p>
+          </div>
 
-        <div className="submit-button mt-4">
-          <input
-            type="submit"
-            className="w-full h-10 bg-indigo-800 rounded-md text-white text-xs uppercase cursor-pointer"
-          />
+          <div className="right-side-form pb-16">
+            <div className="form-inputs relative mb-5">
+              <label className=" bg-white text-gray-600 ">Email</label>
+              <input
+                id="emailInput"
+                type="email"
+                className="w-full px-1 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+              />
+            </div>
+
+            <div className="form-inputs relative mb-5">
+              <label className="bg-white text-gray-600 ">Password</label>
+              <input
+                id="passwordInput"
+                type="password"
+                className=" px-1 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+              />
+            </div>
+
+            <div className="submit-button pt-8 flex justify-end">
+              <input type="submit" className="btn-prima submit-button-input " />
+            </div>
+          </div>
         </div>
       </div>
     </div>
