@@ -4,7 +4,7 @@ import Main from '../layouts/Main';
 
 const SingUpPage = () => {
   return (
-    <Main background="/public/sing-background.jfif">
+    <Main background="/sing-background.jfif">
       <SingUp />
     </Main>
   );

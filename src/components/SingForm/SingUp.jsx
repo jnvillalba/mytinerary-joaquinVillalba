@@ -45,7 +45,7 @@ const SingUp = () => {
           <div className="right-side-text">
             <h6>Sign up with email</h6>
             <p>
-              Already have an account?{" "}
+              Already have an account?
               <a href="/sign-in" className="sign-in">
                 Sign in
               </a>
