@@ -8,7 +8,11 @@
   padding-bottom: 10px;
 }
 
-.hero-container {
-  background-color: #ebebeb;
+.hero-container, .navbar {
+  background-color: #EBEBEB !important;
 }
+
+
+
+
 
