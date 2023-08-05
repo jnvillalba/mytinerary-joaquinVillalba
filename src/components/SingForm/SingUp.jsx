@@ -1,13 +1,14 @@
 import React from "react";
 import "./SingUp.css";
+
 const SingUp = () => {
   return (
-    <div className="singForm__container overflow-hidden lg:px-20 xl:px-32 py-5">
-      <div className="left-side h-full text-white">
-        <h6 className="signUp__logo">My Tinerary</h6>
+    <div className="singForm__container overflow-hidden px-5 lg:px-20 xl:px-32 py-5">
+      <div className="hidden md:block md:w-1/2 left-side h-full text-white">
+        <h2 className="signUp__logo">My Tinerary</h2>
       </div>
 
-      <div className="right-side">
+      <div className="w-full md:w-1/2 right-side">
         <div className="right-side-top">
           <div className="step-text">step 1 of 2</div>
           <div className="text-zinc-900 text-3xl font-semibold py-4">
@@ -22,7 +23,7 @@ const SingUp = () => {
             </button>
           </div>
 
-          <div className="w-96 h-9 py-4 justify-between items-center gap-2.5 inline-flex">
+          <div className=" w-full h-9 py-4 justify-between items-center gap-2.5 inline-flex">
             <div className="w-48 h-px opacity-50 border border-zinc-900 border-opacity-60"></div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +43,7 @@ const SingUp = () => {
         </div>
         <div className="right-side-bottom">
           <div className="right-side-text">
-            <h5>Sign up with email</h5>
+            <h6>Sign up with email</h6>
             <p>
               Already have an account?{" "}
               <a href="/sign-in" className="sign-in">
@@ -53,25 +54,28 @@ const SingUp = () => {
 
           <div className="right-side-form pb-16">
             <div className="form-inputs relative mb-5">
-              <label className=" bg-white text-gray-600 ">Email</label>
+              <label className="bg-white text-gray-600">Email</label>
               <input
                 id="emailInput"
                 type="email"
-                className="w-full px-1 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                className="w-full px-1 py-2 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
               />
             </div>
 
             <div className="form-inputs relative mb-5">
-              <label className="bg-white text-gray-600 ">Password</label>
+              <label className="bg-white text-gray-600">Password</label>
               <input
                 id="passwordInput"
                 type="password"
-                className=" px-1 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
               />
             </div>
 
             <div className="submit-button pt-8 flex justify-end">
-              <input type="submit" className="btn-prima submit-button-input " />
+              <input
+                type="submit"
+                className="btn-prima submit-button-input"
+              />
             </div>
           </div>
         </div>
