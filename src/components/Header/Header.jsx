@@ -61,10 +61,10 @@ const Header = ({ textColor }) => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-prima">
+        <Link to="/sign-in" className="btn btn-prima">
           <UserIcon className="h-5 w-5 flex-none" />
           Login
-        </a>
+        </Link>
       </div>
     </div>
   );

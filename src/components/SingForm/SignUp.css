@@ -130,3 +130,7 @@ line-height: normal;
     padding: 1rem 2rem 0 2rem;
   }
 }
+
+.navbar{
+  background: none !important;
+}
