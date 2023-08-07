@@ -7,7 +7,7 @@ const Header = ({ textColor }) => {
     color: textColor,
   };
   return (
-    <div className="navbar lg:py-6 lg:px-24 xl:p-32" style={headerStyle}>
+    <div className="navbar lg:py-6 lg:px-24" style={headerStyle}>
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
