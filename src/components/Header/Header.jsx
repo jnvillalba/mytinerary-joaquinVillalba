@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
 import { UserIcon } from "@heroicons/react/24/solid";
-
+import { Link } from "react-router-dom";
 const Header = ({ textColor }) => {
   const headerStyle = {
     color: textColor,
@@ -31,23 +31,33 @@ const Header = ({ textColor }) => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a className="Home">Home</a>
+            <Link to="/" className="home">
+                Home
+              </Link>
             </li>
             <li>
-              <a className="Cities">Cities</a>
+            <Link to="/cities" className="cities">
+                Cities
+              </Link>
             </li>
           </ul>
         </div>
-        <a className="navLogo">My Tinerary</a>
+        <Link to="/" className="navLogo">
+          My Tinerary
+        </Link>
       </div>
       <div className="navbar-end">
         <div className="hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a className="home">Home</a>
+            <Link to="/" className="home">
+                Home
+              </Link>
             </li>
             <li>
-              <a className="cities">Cities</a>
+            <Link to="/cities" className="cities">
+                Cities
+              </Link>
             </li>
           </ul>
         </div>

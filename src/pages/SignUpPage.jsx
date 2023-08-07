@@ -1,15 +1,15 @@
 import React from 'react';
-import SingUp from '../components/SingForm/SingUp';
+import SignUp from '../components/SingForm/SignUp';
 import Main from '../layouts/Main';
 import Header from '../components/Header/Header';
 
-const SingUpPage = () => {
+const SignUpPage = () => {
   return (
     <Main background="/sing-background.jfif">
       <Header textColor="#fff" />
-      <SingUp />
+      <SignUp />
     </Main>
   );
 };
 
-export default SingUpPage;
+export default SignUpPage;

@@ -64,8 +64,6 @@
   line-height: normal;
 }
 
-
-
 .singup-socials {
   display: flex;
   flex-direction: row;
@@ -88,8 +86,47 @@
   border-radius: 0.3125rem;
 }
 
+.create-account {
+  color: #1c1c1c;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.country-dropdown,
+.region-dropdown {
+  color: #1473E6;
+  width: 100%;
+  padding: 0;
+}
+
+.right-side-form-step2{
+  display: inline-flex;
+gap: 1rem;
+}
+
+.checkText{
+  color: gray;
+font-family: Segoe UI;
+font-size: 0.8125rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
+.termsAgreement{
+  padding-top: 1rem;
+  color: gray ;
+font-size: 0.8125rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+}
+
 @media (max-width: 768px) {
-  .right-side-top, .right-side-bottom {
+  .right-side-top,
+  .right-side-bottom {
     padding: 1rem 2rem 0 2rem;
   }
 }
