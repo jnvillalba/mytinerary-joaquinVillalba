@@ -22,8 +22,8 @@ const Cities = () => {
       imageUrl: "./ba.jpg",
     },
     {
-      name: "paris",
-      country: "Argentina",
+      name: "Paris",
+      country: "Francia",
       imageUrl:  "./paris.jpg",
     },
   ];
