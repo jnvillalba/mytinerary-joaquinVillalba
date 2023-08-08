@@ -11,3 +11,8 @@
   word-wrap: break-word;
 }
 
+.home:hover,
+.cities:hover {
+  backdrop-filter:  invert(80%);
+}
+

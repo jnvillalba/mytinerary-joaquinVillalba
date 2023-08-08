@@ -34,7 +34,7 @@ const citiesData = [
   {
     id: "5",
     title: "Londres",
-    description: "Reino",
+    description: "Reino Unido",
     image: "./bg-2.jpeg",
   },
   {
@@ -82,7 +82,8 @@ const citiesData = [
     id: "12",
     title: "Moscu",
     description: "Rusia",
-    image: "./bg-1.jpeg",}
+    image: "./bg-1.jpeg",
+  },
 ];
 const Hero = ({ background }) => {
   const groupSize = 4;
@@ -100,9 +101,9 @@ const Hero = ({ background }) => {
             alt="Placeholder"
           />
           <div>
-            <h1 className="text-5xl font-bold mb-4 lg:mb-6">
+            <h2 className="text-5xl font-bold mb-4 lg:mb-6">
               Find the perfect destination
-            </h1>
+            </h2>
             <p className="py-2 lg:py-4 text-wrapper">
               Our app will help you find the perfect path for your next trip.
               With an easy-to-use interface and a host of itinerary options,
@@ -111,14 +112,19 @@ const Hero = ({ background }) => {
             <button className="btn btn-prima">View More</button>
           </div>
         </div>
-        <div className="flex justify-center items-center py-4 lg:py-6">
-          <Link to="/cities" className="btn btn-prima">
+        <div className="flex justify-center items-center pt-8 lg:pt-6">
+          <Link to="/cities" className="btn call-to-action">
             Call to action
           </Link>
         </div>
       </section>
-      <Parallax bgImage={background} strength={500}></Parallax>
+
       <Parallax bgImage={"./cities-bg.jpeg"} strength={500}>
+      <div className="flex justify-center items-center pt-8 lg:pt-6">
+        <h2 className="text-5xl font-bold text-white">
+          Popular Mytineraries
+        </h2>
+      </div>
         <Carousel>
           {groupedCities.map((group, index) => (
             <Carousel.Item key={index}>
