@@ -27,8 +27,8 @@ const SignInStepBottom = () => {
         </button>
         <button className="btn btn-circle w-full bg-blue-600 rounded-full justify-center items-center gap-2.5 inline-flex">
           <div className="flex items-center gap-2.5">
-            <img src="/i-fb.svg" alt="fb-logo" className="w-6 h-6" />
-            <p className="text-white text-base font-bold leading-7 hover:text-blue-600">
+            <img src="/i-fb.svg" alt="fb-logo" className="w-6 h-6 " />
+            <p className="text-white text-baseleading-7 hover:text-blue-600">
               Continue with Facebook
             </p>
           </div>

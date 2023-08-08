@@ -96,32 +96,32 @@
 
 .country-dropdown,
 .region-dropdown {
-  color: #1473E6;
+  color: #1473e6;
   width: 100%;
   padding: 0;
 }
 
-.right-side-form-step2{
+.right-side-form-step2 {
   display: inline-flex;
-gap: 1rem;
+  gap: 1rem;
 }
 
-.checkText{
+.checkText {
   color: gray;
-font-family: Segoe UI;
-font-size: 0.8125rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  font-family: Segoe UI;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.termsAgreement{
+.termsAgreement {
   padding-top: 1rem;
-  color: gray ;
-font-size: 0.8125rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
+  color: gray;
+  font-size: 0.8125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 @media (max-width: 768px) {
@@ -129,8 +129,29 @@ line-height: normal;
   .right-side-bottom {
     padding: 1rem 2rem 0 2rem;
   }
+  
 }
 
-.navbar{
-  background: none !important;
+@media screen and (max-width: 768px) {
+  .user-info{
+    display: flex !important;
+   flex-direction: column !important;
+  }
+  .btn {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem !important;
+  }
+
+  .btn img {
+    width: auto !important;
+    height: 1.5rem !important;
+  }
+
+  .btn p {
+    font-size: auto;
+  }
+  
 }

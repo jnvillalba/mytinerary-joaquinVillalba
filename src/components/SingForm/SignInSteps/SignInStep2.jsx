@@ -10,7 +10,7 @@ const SignInStep2 = ({ setCurrentStep }) => {
       </div>
       <div className="right-side-bottom">
         <div className="right-side-form pb-16">
-          <div className="user-info justify-start items-start gap-2.5 inline-flex pb-4">
+          <div className="user-info flex justify-start items-start gap-2.5 pb-4">
             <img
               className="w-16 h-16 rounded-full"
               src="https://via.placeholder.com/65x64"

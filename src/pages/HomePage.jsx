@@ -5,8 +5,8 @@ import Header from "../components/Header/Header";
 
 const HomePage = () => {
   return (
-    <Main background="#ebebeb">
-      <Header textColor="black" />
+    <Main background="/home-bg.jpeg">
+      <Header textColor="#fff" />
       <Hero />
     </Main>
   );
