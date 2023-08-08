@@ -1,5 +1,5 @@
 .text-wrapper {
-  color: #1c1c1c99;
+
   font-family: "Segoe UI-Semibold", "Helvetica";
   font-size: 24px;
   font-weight: 400;
@@ -8,8 +8,10 @@
   padding-bottom: 10px;
 }
 
-.hero-container, .navbar {
-  background-color: #EBEBEB !important;
+.hero-content{
+  backdrop-filter: blur(15px);
+  border-radius: 0.3125rem;
+
 }
 
 

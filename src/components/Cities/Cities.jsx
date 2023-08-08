@@ -2,6 +2,8 @@ import React from "react";
 import City from "./City";
 
 const Cities = () => {
+
+//Las ciudades seran reemplazads por una api
   const citiesData = [
     {
       name: "Wakatobi",
@@ -12,17 +14,17 @@ const Cities = () => {
     {
       name: "Neo Tokyo",
       country: "Japan",
-      imageUrl: "https://via.placeholder.com/308x200",
+      imageUrl: "./tokyo.jfif",
     },
     {
       name: "Buenos Aires",
       country: "Argentina",
-      imageUrl: "https://via.placeholder.com/308x200",
+      imageUrl: "./ba.jpg",
     },
     {
-      name: "Capilla del Monte",
+      name: "paris",
       country: "Argentina",
-      imageUrl: "https://via.placeholder.com/308x200",
+      imageUrl:  "./paris.jpg",
     },
   ];
   return (
