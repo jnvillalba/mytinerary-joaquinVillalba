@@ -7,7 +7,7 @@ import SignIn from '../components/SingForm/SignIn';
 const SignInPage = () => {
   return (
     <Main background="/sign-in-bg.jpg">
-      <Header textColor="#fff" />
+    
       <SignIn />
     </Main>
   );

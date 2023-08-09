@@ -6,7 +6,7 @@ import Header from '../components/Header/Header';
 const SignUpPage = () => {
   return (
     <Main background="/sing-background.jfif">
-      <Header textColor="#fff" />
+      
       <SignUp />
     </Main>
   );

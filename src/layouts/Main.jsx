@@ -14,6 +14,7 @@ const Main = ({ children, background }) => {
 
   return (
     <div style={mainStyle}>
+      <Header textColor="#fff"/>
       {children}
       <Footer />
     </div>
