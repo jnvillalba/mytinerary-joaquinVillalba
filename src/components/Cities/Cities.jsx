@@ -1,32 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import City from "./City";
 
 const Cities = () => {
+  const [citiesData, setCitiesData] = useState([]);
 
-//Las ciudades seran reemplazads por una api
-  const citiesData = [
-    {
-      name: "Wakatobi",
-      country: "Indonesia",
-      imageUrl:
-        "https://media.cnn.com/api/v1/images/stellar/prod/170407220916-04-iconic-mountains-matterhorn-restricted.jpg?q=w_2512,h_1413,x_0,y_0,c_fill/w_1280",
-    },
-    {
-      name: "Neo Tokyo",
-      country: "Japan",
-      imageUrl: "./tokyo.jfif",
-    },
-    {
-      name: "Buenos Aires",
-      country: "Argentina",
-      imageUrl: "./ba.jpg",
-    },
-    {
-      name: "Paris",
-      country: "Francia",
-      imageUrl:  "./paris.jpg",
-    },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+          //La data seran reemplazadas por una api
+        const data = [
+          {
+            name: "Wakatobi",
+            country: "Indonesia",
+            imageUrl:
+              "https://media.cnn.com/api/v1/images/stellar/prod/170407220916-04-iconic-mountains-matterhorn-restricted.jpg?q=w_2512,h_1413,x_0,y_0,c_fill/w_1280",
+          },
+          {
+            name: "Neo Tokyo",
+            country: "Japan",
+            imageUrl: "./tokyo.jfif",
+          },
+          {
+            name: "Buenos Aires",
+            country: "Argentina",
+            imageUrl: "./ba.jpg",
+          },
+          {
+            name: "Paris",
+            country: "Francia",
+            imageUrl: "./paris.jpg",
+          },
+        ];
+        setCitiesData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center ">

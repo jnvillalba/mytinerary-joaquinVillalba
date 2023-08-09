@@ -10,6 +10,8 @@ const router = createBrowserRouter([
   { path:'/sign-up', element: <SignUpPage/> },
   { path:'/sign-in', element: <SignInPage/> },
   { path:'/cities', element: <CitiesPage/> },
+  //En el futuro sera pagina de error
+  { path:'*', element: <HomePage /> },
 ])
 
 function App() {
