@@ -7,9 +7,9 @@ const cities = axios.create({
 export const getAllCities = async () => {
     try {
         const {data} = await cities("/cities")
+        console.log(data)
         return data.cities
     } catch (error) {
-        console.log(error.message);
         return []
     }
 
@@ -17,10 +17,9 @@ export const getAllCities = async () => {
 
 export const getCity= async (id) => {
     try {
-        const {data} = await cities("/city"+id)
-        return data
+        const {data} = await cities("/city/"+id)
+        return data.city
     } catch (error) {
-        console.log(error.message);
         return []
     }
 

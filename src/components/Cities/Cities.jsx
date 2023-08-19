@@ -8,18 +8,18 @@ const Cities = () => {
     getAllCities()
       .then((data) => {
         setCitiesData(data);
-
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [citiesData]);
 
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center ">
-        <img width={308}
-        height={200}
+        <img
+          width={308}
+          height={200}
           src="/bg-1.jpeg"
           alt="Banner"
           className=""
