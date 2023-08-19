@@ -96,9 +96,10 @@ const Hero = ({ background }) => {
       <section className="hero-container py-6 lg:px-24 min-h-screen">
         <div className="hero-content text-white lg:flex-row-reverse transform hover:scale-105 duration-500 ease-in-out">
           <img
-            src="/placeholder.png"
+            src="/hero.jpg"
             className="max-w-sm w-full rounded-lg shadow-2xl"
-            alt="Placeholder"
+            alt="hero"
+            height={305}
           />
           <div>
             <h2 className="text-5xl font-bold mb-4 lg:mb-6">
@@ -119,13 +120,13 @@ const Hero = ({ background }) => {
         </div>
       </section>
 
-      <Parallax bgImage={"./cities-bg.jpeg"} strength={500}>
+      <Parallax bgImage={"./playa-tropical.jpg"} strength={500}>
       <div className="flex justify-center items-center pt-8 lg:pt-6">
         <h2 className="text-5xl font-bold text-white">
           Popular Mytineraries
         </h2>
       </div>
-        <Carousel>
+        <Carousel data-bs-theme="dark">
           {groupedCities.map((group, index) => (
             <Carousel.Item key={index}>
               <Carousel3D

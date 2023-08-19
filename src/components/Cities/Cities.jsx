@@ -18,8 +18,9 @@ const Cities = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center ">
-        <img
-          src="https://via.placeholder.com/308x200"
+        <img width={308}
+        height={200}
+          src="/bg-1.jpeg"
           alt="Banner"
           className=""
         />

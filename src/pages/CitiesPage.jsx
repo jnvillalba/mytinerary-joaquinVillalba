@@ -4,7 +4,7 @@ import Cities from "../components/Cities/Cities";
 
 const CitiesPage = () => {
   return (
-    <Main background="/cities-bg.jpeg">
+    <Main background="/bg-3.jpg">
       <Cities />
     </Main>
   );
