@@ -1,91 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Hero.css";
 import { Parallax } from "react-parallax";
-import { Link } from "react-router-dom";
+import { Link,useNavigate  } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import { Carousel as Carousel3D } from "react-3dm-carousel";
-import { MapPinIcon } from "@heroicons/react/24/solid";
-const citiesData = [
-  {
-    id: "1",
-    title: "Wakatobi",
-    description: "Indonesia",
-    image:
-      "https://media.cnn.com/api/v1/images/stellar/prod/170407220916-04-iconic-mountains-matterhorn-restricted.jpg?q=w_2512,h_1413,x_0,y_0,c_fill/w_1280",
-  },
-  {
-    id: "2",
-    title: "Neo Tokyo",
-    description: "Japan",
-    image: "./tokyo.jfif",
-  },
-  {
-    id: "3",
-    title: "Buenos Aires",
-    description: "Argentina",
-    image: "./ba.jpg",
-  },
-  {
-    id: "4",
-    title: "Nueva York",
-    description: "Estados Unidos",
-    image: "./ny.jpg",
-  },
-  {
-    id: "5",
-    title: "Londres",
-    description: "Reino Unido",
-    image: "./bg-2.jpeg",
-  },
-  {
-    id: "6",
-    title: "Río de Janeiro",
-    description: "Brasil",
-    image: "./cities-bg.jpeg",
-  },
-  {
-    id: "7",
-    title: "Roma",
-    description: "Italia",
-    image:
-      "https://images.unsplash.com/photo-1507643179773-3e975d7ac515?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjB8fHBob3RvZ3JhcGh5JTIwYXJ0fGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: "8",
-    title: "Pekin",
-    description: "China",
-    image:
-      "https://images.unsplash.com/photo-1603924147107-81e7a2b3051e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTN8fHBob3RvZ3JhcGh5JTIwYXJ0fGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: "9",
-    title: "Estambul",
-    description: "Turkey",
-    image:
-      "https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBob3RvZ3JhcGh5JTIwYXJ0fGVufDB8MHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: "10",
-    title: "Ciudad de México",
-    description: "Mexico",
-    image:
-      "https://images.unsplash.com/photo-1520052205864-92d242b3a76b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fGJyaWdodHxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: "11",
-    title: "Sidney",
-    description: "Australia",
-    image:
-      "https://images.unsplash.com/photo-1487376480913-24046456a727?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fGJyaWdodHxlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60",
-  },
-  {
-    id: "12",
-    title: "Moscu",
-    description: "Rusia",
-    image: "./bg-1.jpeg",
-  },
-];
+import { getAllCities } from "../../services/cityQueries";
+
 const Hero = ({ background }) => {
+  const [citiesData, setCitiesData] = useState([]);
+  const navigate = useNavigate()
+  useEffect(() => {
+    getAllCities()
+      .then((data) => {
+        const limitedData = data.slice(0, 12);
+        const transformedData = limitedData.map((city) => ({
+          id: city._id,
+          title: city.name,
+          description: city.country,
+          image: city.image,
+         
+        }));
+        setCitiesData(transformedData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [citiesData]);
+
+    
+    const onTitleClickHandler = (card) => {
+      console.log("clicked", card);
+      navigate('/cities/city/' + card.id);
+    };
   const groupSize = 4;
   const groupedCities = [];
   for (let i = 0; i < citiesData.length; i += groupSize) {
@@ -110,7 +56,7 @@ const Hero = ({ background }) => {
               With an easy-to-use interface and a host of itinerary options,
               planning your next trip has never been easier.
             </p>
-            <button className="btn btn-prima">View More</button>
+            <button className="btn btn-prima my-4">View More</button>
           </div>
         </div>
         <div className="flex justify-center items-center pt-8 lg:pt-6">
@@ -121,11 +67,11 @@ const Hero = ({ background }) => {
       </section>
 
       <Parallax bgImage={"./playa-tropical.jpg"} strength={500}>
-      <div className="flex justify-center items-center pt-8 lg:pt-6">
-        <h2 className="text-5xl font-bold text-white">
-          Popular Mytineraries
-        </h2>
-      </div>
+        <div className="flex justify-center items-center pt-8 lg:pt-6">
+          <h2 className="text-5xl font-bold text-white">
+            Popular Mytineraries
+          </h2>
+        </div>
         <Carousel data-bs-theme="dark">
           {groupedCities.map((group, index) => (
             <Carousel.Item key={index}>
@@ -135,6 +81,7 @@ const Hero = ({ background }) => {
                 rotationDuration={60}
                 tilt={false}
                 freeRoam={true}
+                onTitleClickHandler={onTitleClickHandler}
               />
             </Carousel.Item>
           ))}
