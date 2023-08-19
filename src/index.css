@@ -23,3 +23,19 @@
 .icon-shadow {
   filter: drop-shadow(2px 2px 4px rgba(1, 1, 1, 5));
 }
+
+.animation-flicker {
+  transition: 0.3s ease-in-out !important;
+  animation: flicker 0.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.5;
+    text-shadow: 2px 2px 10px $blue;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 2px 2px 20px $blue;
+  }
+}

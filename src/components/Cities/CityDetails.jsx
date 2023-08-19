@@ -9,7 +9,7 @@ const CityDetails = ({ city }) => {
             <div className="py-2 text-white text-5xl font-bold">
               {city.name}
             </div>
-            <div className="text-white text-2xl font-semibold py-2">
+            <div className="text-white text-2xl font-semibold py-2 animation-flicker">
               Under construction
             </div>
           </div>
