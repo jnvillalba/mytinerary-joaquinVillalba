@@ -2,7 +2,7 @@ import React from "react";
 import { MapPinIcon } from "@heroicons/react/24/solid";
 const City = ({ index, city }) => {
   const cardStyle = {
-    backgroundImage: `url(${city.imageUrl})`,
+    backgroundImage: `url(${city.image})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",

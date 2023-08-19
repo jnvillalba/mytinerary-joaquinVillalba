@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "autoprefixer": "^10.4.14",
+    "axios": "^1.4.0",
     "bootstrap": "^5.3.1",
     "postcss": "^8.4.27",
     "react": "^18.2.0",
