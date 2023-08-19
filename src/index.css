@@ -8,3 +8,18 @@
   border: none;
 }
 
+.city-card {
+  transition: transform 0.3s;
+}
+
+.city-link:hover .city-card {
+  transform: scale(1.1);
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 4px rgba(1, 1, 1, 5);
+}
+
+.icon-shadow {
+  filter: drop-shadow(2px 2px 4px rgba(1, 1, 1, 5));
+}

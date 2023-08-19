@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import Main from "../layouts/Main";
 import { useParams } from "react-router-dom";
 import { getCity } from "../services/cityQueries";
+import CityDetails from "../components/Cities/CityDetails";
 
-const CityDetails = () => {
+const CityDetailsPage = () => {
   const [city, setCity] = useState([]);
 
   const { id } = useParams();
@@ -21,9 +22,9 @@ const CityDetails = () => {
 
   return (
     <Main background={city.image}>
-      <h1>{city.name}</h1>
+      <CityDetails city={city} />
     </Main>
   );
 };
 
-export default CityDetails;
+export default CityDetailsPage;
