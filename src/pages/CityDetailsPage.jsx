@@ -14,6 +14,7 @@ const CityDetailsPage = () => {
       .then((data) => {
         console.log(data);
         setCity(data);
+        console.log(city.image)
       })
       .catch((error) => {
         console.log(error.message);

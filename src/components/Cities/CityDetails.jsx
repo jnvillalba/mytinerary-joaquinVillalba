@@ -13,10 +13,13 @@ const CityDetails = ({ city }) => {
               Under construction
             </div>
           </div>
-
-          <button className="px-5 py-2 btn btn-prima">
+          <Link to="/cities" className="btn my-12">
+            Back to Cities
+          </Link>
+          <button className="px-5 py-2 btn btn-prima disabled">
             <a href="#itineraries"> View Itineraries ↓ </a>
           </button>
+
         </div>
       </section>
       <section id="itineraries">
