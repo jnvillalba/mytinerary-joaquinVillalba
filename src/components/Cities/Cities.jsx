@@ -3,34 +3,38 @@ import City from "./City";
 import { getAllCities } from "../../services/cityQueries";
 const Cities = () => {
   const [citiesData, setCitiesData] = useState([]);
-  const [allCities, setAllCities] = useState([]);
   const input = useRef(null);
-  
+
   useEffect(() => {
     getAllCities()
       .then((data) => {
         setCitiesData(data);
-        setAllCities(data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, [citiesData]);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.current.value) {
-      const queryParams = "?search=" + input.current.value;
-      getAllCities(queryParams)
+    const searchText = input.current.value.trim();
+
+    if (searchText) {
+      getAllCities(`?search=${searchText}`)
         .then((data) => {
-          console.log(data);
           setCitiesData(data);
         })
         .catch((error) => {
           console.log(error);
         });
     } else {
-      setCitiesData(allCities);
+      getAllCities()
+        .then((data) => {
+          setCitiesData(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   };
 
