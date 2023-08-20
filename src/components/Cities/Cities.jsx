@@ -75,7 +75,16 @@ const Cities = () => {
           {citiesData.length > 0 ? (
             citiesData.map((city, index) => <City key={index} city={city} />)
           ) : (
-            <h2>No se encontraron concidencias</h2>
+            <div className="bg-white p-8 rounded-lg shadow-md text-center">
+              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+                No se encontraron coincidencias
+              </h2>
+              <p className="text-gray-600">
+                Lo sentimos, no hemos encontrado ninguna coincidencia para tu
+                búsqueda. Por favor, intenta de nuevo con diferentes criterios
+                de búsqueda.
+              </p>
+            </div>
           )}
         </div>
       </div>
