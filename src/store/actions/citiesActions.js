@@ -1,17 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { getAllCities } from "../../services/cityQueries";
 
-const get_cities = createAsyncThunk("get_cities", async () => {
-  const cities = await axios
-    .get("http://localhost:3000/api/cities")
-    .then((response) => {
-      return response.data.cities;
-    });
+const get_cities = createAsyncThunk("get_cities", async (queryParams = "") => {
+  const cities = await getAllCities(queryParams);
+    
 
   return {
     cities: cities,
   };
 });
+
+
 
 const citiesActions = {
   get_cities,

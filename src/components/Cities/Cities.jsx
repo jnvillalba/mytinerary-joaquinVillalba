@@ -6,7 +6,7 @@ const Cities = () => {
   const dispatch = useDispatch();
   const citiesData = useSelector((store) => store.citiesReducer.cities);
   const input = useRef(null); 
-  console.log(citiesData)
+  
   useEffect(() => {
     dispatch(citiesActions.get_cities())
       .unwrap()
@@ -20,21 +20,13 @@ const Cities = () => {
     const searchText = input.current.value.trim();
 
     if (searchText) {
-      getAllCities(`?search=${searchText}`)
-        .then((data) => {
-          setCitiesData(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    } else {
-      getAllCities()
-        .then((data) => {
-          setCitiesData(data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      dispatch(citiesActions.get_cities(`?search=${searchText}`));
+    } else{
+      dispatch(citiesActions.get_cities())
+      .unwrap()
+      .catch((error) => {
+        console.log(error);
+      });
     }
   };
 
@@ -76,15 +68,14 @@ const Cities = () => {
             citiesData.map((city, index) => <City key={index} city={city} />)
           ) : (
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
-              <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-                No se encontraron coincidencias
-              </h2>
-              <p className="text-gray-600">
-                Lo sentimos, no hemos encontrado ninguna coincidencia para tu
-                búsqueda. Por favor, intenta de nuevo con diferentes criterios
-                de búsqueda.
-              </p>
-            </div>
+  <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+    No matches found
+  </h2>
+  <p className="text-gray-600">
+    Sorry, we couldn't find any matches for your search. Please try again with different search criteria.
+  </p>
+</div>
+
           )}
         </div>
       </div>
