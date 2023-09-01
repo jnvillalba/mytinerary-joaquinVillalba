@@ -1,14 +1,19 @@
-import { createAction } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
-const add_cities = createAction("add_cities", (array) => {
+const get_cities = createAsyncThunk("get_cities", async () => {
+  const cities = await axios
+    .get("http://localhost:3000/api/cities")
+    .then((response) => {
+      return response.data.cities;
+    });
+
   return {
-    payload:{
-        cities: array
-    }
+    cities: cities,
   };
 });
 
 const citiesActions = {
-  add_cities,
+  get_cities,
 };
 export default citiesActions;

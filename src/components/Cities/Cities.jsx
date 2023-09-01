@@ -1,15 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import City from "./City";
-import { getAllCities } from "../../services/cityQueries";
+import { useDispatch, useSelector } from "react-redux";
+import citiesActions from "../../store/actions/citiesActions";
 const Cities = () => {
-  const [citiesData, setCitiesData] = useState([]);
-  const input = useRef(null);
-
+  const dispatch = useDispatch();
+  const citiesData = useSelector((store) => store.citiesReducer.cities);
+  const input = useRef(null); 
+  console.log(citiesData)
   useEffect(() => {
-    getAllCities()
-      .then((data) => {
-        setCitiesData(data);
-      })
+    dispatch(citiesActions.get_cities())
+      .unwrap()
       .catch((error) => {
         console.log(error);
       });
