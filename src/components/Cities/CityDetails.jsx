@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Itineraries from "../Itineraries/Itineraries";
 const CityDetails = ({ city }) => {
   return (
     <>
@@ -13,10 +14,7 @@ const CityDetails = ({ city }) => {
               Under construction
             </div>
           </div>
-          <Link to="/cities" className="btn my-12">
-            Back to Cities
-          </Link>
-          <button className="px-5 py-2 btn btn-prima disabled">
+          <button className="px-5 py-2 btn btn-prima">
             <a href="#itineraries"> View Itineraries ↓ </a>
           </button>
 
@@ -25,12 +23,7 @@ const CityDetails = ({ city }) => {
       <section id="itineraries">
         <div className="w-full  px-5 py-7 bg-gray-200 justify-center items-center inline-flex">
           <div className="grow py-36 bg-white rounded-lg shadow justify-center items-center inline-flex">
-            <div className=" flex-col justify-center items-center gap-8 inline-flex">
-              <img className="w-64 h-48" src="/no-itineraries.svg" />
-              <div className="text-zinc-900 text-3xl font-semibold p-2">
-                There are no itineraries
-              </div>
-            </div>
+            <Itineraries/>
           </div>
         </div>
       </section>
