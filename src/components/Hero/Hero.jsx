@@ -41,7 +41,18 @@ const Hero = ({ background }) => {
     return citiesDataCarousel().slice(start, start + groupSize);
   });
   
-
+  const carouselItems = groupedCities.map((group, index) => (
+    <Carousel.Item key={index}>
+      <Carousel3D
+        cardsData={group}
+        rotation={true}
+        rotationDuration={60}
+        tilt={false}
+        freeRoam={true}
+        onTitleClickHandler={onTitleClickHandler}
+      />
+    </Carousel.Item>
+  ));
   return (
     <div>
       <section className="hero-container py-6 lg:px-24 min-h-screen">
@@ -77,20 +88,7 @@ const Hero = ({ background }) => {
             Popular Mytineraries
           </h2>
         </div>
-        <Carousel data-bs-theme="dark">
-          {groupedCities.map((group, index) => (
-            <Carousel.Item key={index}>
-              <Carousel3D
-                cardsData={group}
-                rotation={true}
-                rotationDuration={60}
-                tilt={false}
-                freeRoam={true}
-                onTitleClickHandler={onTitleClickHandler}
-              />
-            </Carousel.Item>
-          ))}
-        </Carousel>
+        <Carousel data-bs-theme="dark">{carouselItems}</Carousel>
       </Parallax>
     </div>
   );
