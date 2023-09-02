@@ -22,7 +22,7 @@ const CityDetails = ({ city }) => {
       </section>
       <section id="itineraries">
         <div className="w-full  px-5 py-7 bg-gray-200 justify-center items-center inline-flex">
-          <div className="grow py-36 bg-white rounded-lg shadow justify-center items-center inline-flex">
+          <div className="grow  bg-white rounded-lg shadow justify-center items-center inline-flex">
             <Itineraries/>
           </div>
         </div>
