@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const City = ({ index, city }) => {
   const cardStyle = {
-    //backgroundImage: `url(${city.image})`,
+    backgroundImage: `url(${city.image})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
