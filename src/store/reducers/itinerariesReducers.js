@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import itinerariesActions from "../actions/ItinerariesActions";
+import itinerariesActions from "../actions/itinerariesActions";
 const initialState = {
   itineraries: [],
 };

@@ -10,7 +10,7 @@ const Itinerary = ({ itinerary }) => {
   };
 
   return (
-    <div className="card bg-base-100 m-5 shadow-xl sm:w-1/2 md:w-1/3 lg:w-1/4">
+    <div className="card bg-base-100 m-5 shadow-xl sm:w-1/2 md:w-1/3 lg:w-1/4 h-[400px]"> {/* Establece una altura fija */}
       <figure>
         <img className="w-full" src={itinerary.image} alt={itinerary.name} />
       </figure>

@@ -10,10 +10,14 @@ const initialState = {
 };
 
 const citiesReducer = createReducer(initialState, (builder) => {
-  return builder.addCase(citiesActions.get_cities.fulfilled, (state, action) => {
-    const newState = { ...state, cities: action.payload.cities };
-    return newState;
-  });
+  builder
+    .addCase(citiesActions.get_cities.fulfilled, (state, action) => {
+      const newState = { ...state, cities: action.payload.cities };
+      return newState;
+    })
+    .addCase(citiesActions.set_cities, (state, action) => {
+      state.cities = action.payload;
+    });
 });
 
 export default citiesReducer;

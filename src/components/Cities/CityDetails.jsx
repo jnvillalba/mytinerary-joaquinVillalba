@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Itineraries from "../Itineraries/Itineraries";
+import { MapPinIcon } from "@heroicons/react/24/solid";
 const CityDetails = ({ city }) => {
   return (
     <>
@@ -10,8 +11,8 @@ const CityDetails = ({ city }) => {
             <div className="py-2 text-white text-5xl font-bold">
               {city.name}
             </div>
-            <div className="text-white text-2xl font-semibold py-2 animation-flicker">
-              Under construction
+            <div className="text-white text-2xl font-semibold py-2 flex justify-center items-center">
+            <MapPinIcon className="h-4 w-4 flex-none mr-2" />{city.country}
             </div>
           </div>
           <button className="px-5 py-2 btn btn-prima">

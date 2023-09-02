@@ -4,39 +4,44 @@ import { Parallax } from "react-parallax";
 import { Link,useNavigate  } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import { Carousel as Carousel3D } from "react-3dm-carousel";
-import { getAllCities } from "../../services/cityQueries";
-
+import { useDispatch, useSelector } from "react-redux";
+import citiesActions from "../../store/actions/citiesActions";
 const Hero = ({ background }) => {
-  const [citiesData, setCitiesData] = useState([]);
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const citiesData = useSelector((store) => store.citiesReducer.cities);
   useEffect(() => {
-    getAllCities()
-      .then((data) => {
-        const limitedData = data.slice(0, 12);
-        const transformedData = limitedData.map((city) => ({
-          id: city._id,
-          title: city.name,
-          description: city.country,
-          image: city.image,
-         
-        }));
-        setCitiesData(transformedData);
-      })
+    dispatch(citiesActions.get_cities())
+      .unwrap()
       .catch((error) => {
         console.log(error);
       });
-  }, [citiesData]);
+  }, []);
 
     
-    const onTitleClickHandler = (card) => {
-      console.log("clicked", card);
-      navigate('/cities/city/' + card.id);
-    };
+  const onTitleClickHandler = (card) => {
+    console.log("clicked", card);
+    navigate('/cities/city/' + card.id);
+  };
+
+  const citiesDataCarousel = () => {
+    const limitedData = citiesData.slice(0, 12);
+    return limitedData.map((city) => ({
+      id: city._id,
+      title: city.name,
+      description: city.country,
+      image: city.image,
+    }));
+  };
+  
   const groupSize = 4;
-  const groupedCities = [];
-  for (let i = 0; i < citiesData.length; i += groupSize) {
-    groupedCities.push(citiesData.slice(i, i + groupSize));
-  }
+  const citiesDataLength = citiesDataCarousel().length;
+  const groupedCities = Array.from({ length: Math.ceil(citiesDataLength / groupSize) }, (_, index) => {
+    const start = index * groupSize;
+    return citiesDataCarousel().slice(start, start + groupSize);
+  });
+  
+
   return (
     <div>
       <section className="hero-container py-6 lg:px-24 min-h-screen">
