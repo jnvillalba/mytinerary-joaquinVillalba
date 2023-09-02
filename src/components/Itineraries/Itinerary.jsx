@@ -10,9 +10,9 @@ const Itinerary = ({ itinerary }) => {
   };
 
   return (
-    <div className="card bg-base-100 m-5 shadow-xl">
+    <div className="card bg-base-100 m-5 shadow-xl sm:w-1/2 md:w-1/3 lg:w-1/4">
       <figure>
-        <img src={itinerary.image} alt={itinerary.name} />
+        <img className="w-full" src={itinerary.image} alt={itinerary.name} />
       </figure>
       <div className="card-body">
         <h2 className="card-title">
@@ -32,16 +32,12 @@ const Itinerary = ({ itinerary }) => {
           ))}
         </p>
         <div className="mt-4 flex justify-between">
-          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">
-            View More
-          </button>
           <div>
             {itinerary.hashtags.map((tag) => (
               <div className="badge badge-outline m-1" key={tag}>
                 {tag}
               </div>
             ))}
-            
           </div>
         </div>
         <div className="mt-4">
@@ -49,7 +45,7 @@ const Itinerary = ({ itinerary }) => {
             className="text-blue-500 flex items-center"
             onClick={toggleAccordion}
           >
-            Activities and Comments
+            View More
             <ChevronDownIcon
               className={`ml-2 w-5 h-5 transition-transform ${
                 isAccordionOpen ? "transform rotate-180" : ""
@@ -58,7 +54,7 @@ const Itinerary = ({ itinerary }) => {
           </button>
           {isAccordionOpen && (
             <div className="mt-2">
-              <p>Under Construction</p>
+              <p>Activities and Comments Under Construction</p>
             </div>
           )}
         </div>

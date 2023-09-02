@@ -20,7 +20,7 @@ const Itineraries = () => {
       });
   }, [dispatch, cityId]);
   return (
-    <div className=" justify-center items-center flex-row">
+    <div className=" justify-center items-center flex flex-wrap">
       {itinerariesData.length === 0 ? (
        <NoItineraries/>
       ) : (
