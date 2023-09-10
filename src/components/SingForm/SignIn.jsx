@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -8,9 +8,6 @@ const SignIn = () => {
   const passwordInputRef = useRef();
 
   const handleSignIn = () => {
-    console.log(emailInputRef.current.value);
-
-    console.log(passwordInputRef.current.value);
     if (emailInputRef.current && passwordInputRef.current) {
       axios
         .post("http://localhost:3000/api/users/login", {
@@ -18,8 +15,9 @@ const SignIn = () => {
           password: passwordInputRef.current.value,
         })
         .then((response) => {
-          console.log(response.data);
           localStorage.setItem("token", response.data.token);
+          localStorage.setItem("user", JSON.stringify(response.data.user));
+
         })
         .catch((error) => {
           error.response.data.message.forEach((message) =>

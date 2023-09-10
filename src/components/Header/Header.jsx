@@ -1,7 +1,7 @@
 import React from "react";
 import "./Header.css";
-import { UserIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+import AuthButton from "./AuthButton";
 const Header = ({ textColor }) => {
   const headerStyle = {
     color: textColor,
@@ -61,10 +61,7 @@ const Header = ({ textColor }) => {
             </li>
           </ul>
         </div>
-        <Link to="/sign-in" className="btn btn-prima">
-          <UserIcon className="h-5 w-5 flex-none" />
-          Login
-        </Link>
+        <AuthButton />
       </div>
     </div>
   );
