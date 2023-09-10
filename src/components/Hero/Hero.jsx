@@ -88,7 +88,7 @@ const Hero = ({ background }) => {
             Popular Mytineraries
           </h2>
         </div>
-        <Carousel data-bs-theme="dark">{carouselItems}</Carousel>
+       {/* <Carousel data-bs-theme="dark">{carouselItems}</Carousel> */}
       </Parallax>
     </div>
   );
