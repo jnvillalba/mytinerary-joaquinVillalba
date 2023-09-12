@@ -1,7 +1,32 @@
 import React from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { Link } from "react-router-dom";
 
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  password: Yup.string().required("Password is required"),
+});
+
 const SignUpStep1 = ({ setCurrentStep, formData, handleFormChange }) => {
+  const formik = useFormik({
+    initialValues: {
+      email: formData.email,
+      password: formData.password,
+    },
+    validationSchema: validationSchema,
+    onSubmit: () => {
+      setCurrentStep();
+    },
+  });
+
+  const handleInputChange = (field, value) => {
+    handleFormChange(field, value);
+    formik.setFieldValue(field, value, true);
+  };
+
   return (
     <>
       <div className="right-side-top">
@@ -48,36 +73,48 @@ const SignUpStep1 = ({ setCurrentStep, formData, handleFormChange }) => {
         </div>
 
         <div className="right-side-form pb-16">
-          <div className="form-inputs relative mb-5">
-            <label className="bg-white text-gray-600">Email</label>
-            <input
-              id="emailInput"
-              type="email"
-              className="w-full px-1 py-2 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
-              value={formData.email}
-              onChange={(e) => handleFormChange("email", e.target.value)}
-            />
-          </div>
+          <form onSubmit={formik.handleSubmit}>
+            <div className="form-inputs relative mb-5">
+              <label className="bg-white text-gray-600">Email</label>
+              <input
+                id="emailInput"
+                type="email"
+                className="w-full px-1 py-2 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                name="email"
+                value={formik.values.email}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.email && formik.errors.email ? (
+                <div className="text-red-500">{formik.errors.email}</div>
+              ) : null}
+            </div>
 
-          <div className="form-inputs relative mb-5">
-            <label className="bg-white text-gray-600">Password</label>
-            <input
-              id="passwordInput"
-              type="password"
-              className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
-              value={formData.password}
-              onChange={(e) => handleFormChange("password", e.target.value)}
-            />
-          </div>
+            <div className="form-inputs relative mb-5">
+              <label className="bg-white text-gray-600">Password</label>
+              <input
+                id="passwordInput"
+                type="password"
+                className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                name="password"
+                value={formik.values.password}
+                onChange={(e) => handleInputChange("password", e.target.value)}
+                onBlur={formik.handleBlur}
+              />
+              {formik.touched.password && formik.errors.password ? (
+                <div className="text-red-500">{formik.errors.password}</div>
+              ) : null}
+            </div>
 
-          <div className="submit-button pt-8 flex justify-end">
-            <input
-              type="submit"
-              className="btn-prima submit-button-input"
-              onClick={() => setCurrentStep()}
-              value={"Continue"}
-            />
-          </div>
+            <div className="submit-button pt-8 flex justify-end">
+              <input
+                type="submit"
+                className="btn-prima submit-button-input"
+                value={"Continue"}
+                disabled={!formik.isValid}
+              />
+            </div>
+          </form>
         </div>
       </div>
     </>
