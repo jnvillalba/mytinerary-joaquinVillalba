@@ -66,10 +66,24 @@ const sign_out = createAsyncThunk("sign_out", async () => {
     };
   }
 });
+
+ const register_user = createAsyncThunk("sign_out", async (userData) => {
+  try {
+    axios.post("http://localhost:3000/api/users/register", userData)
+      .then((response) => {
+        console.log("User created:", response);
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 const userActions = {
   sign_in,
   authenticate,
   sign_out,
+  register_user
 };
 
 export default userActions;

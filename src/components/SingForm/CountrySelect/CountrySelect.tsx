@@ -1,17 +1,9 @@
-import React, { useState } from "react";
-import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+import React from "react";
+import { CountryDropdown } from "react-country-region-selector";
 
-const CountrySelect = () => {
-  const [country, setCountry] = useState("");
-  const [region, setRegion] = useState("");
-
+const CountrySelect = ({ formData, handleFormChange }) => {
   const handleCountryChange = (selectedCountry) => {
-    setCountry(selectedCountry);
-    setRegion("");
-  };
-
-  const handleRegionChange = (selectedRegion) => {
-    setRegion(selectedRegion);
+    handleFormChange("country", selectedCountry); 
   };
 
   return (
@@ -19,15 +11,8 @@ const CountrySelect = () => {
       <label className="bg-white text-gray-600">Country/Region</label>
       <CountryDropdown
         classes="country-dropdown"
-        value={country}
+        value={formData.country}
         onChange={handleCountryChange}
-      />
-      <RegionDropdown
-      disableWhenEmpty={true}
-        classes="region-dropdown"
-        country={country}
-        value={region}
-        onChange={handleRegionChange}
       />
     </div>
   );

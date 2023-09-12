@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import "./SignUp.css";
 import SignUpStep1 from "./SingUpSteps/SignUpStep1";
 import SignUpStep2 from "./SingUpSteps/SignUpStep2";
+import userActions from "../../store/actions/userActions";
+import { useDispatch } from "react-redux";
 const SignUp = () => {
+  const dispatch = useDispatch()
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    firstName: "",
+    name: "",
     lastName: "",
-    month: "",
-    year: "",
     photo: "",
-    contactViaEmail: false,
+    country: "",
   });
   const handleFormChange = (field, value) => {
     setFormData({
@@ -20,7 +21,12 @@ const SignUp = () => {
       [field]: value,
       
     });
+    
+  };
+
+  const handleRegister = () => {
     console.log(formData);
+    dispatch(userActions.register_user(formData));
   };
   return (
     <div className="singForm__container overflow-hidden px-5 lg:px-20 xl:px-32 py-5">
@@ -37,9 +43,10 @@ const SignUp = () => {
         /> 
         )}
         {currentStep === 2 && (
-          <SignUpStep2 setCurrentStep={() => setCurrentStep(1)}
+          <SignUpStep2 
+          setCurrentStep={() => setCurrentStep(1)}
           formData={formData}
-          handleFormChange={handleFormChange} />
+          handleFormChange={handleFormChange} handleRegister={handleRegister} />
         )}
       </div>
     </div>
