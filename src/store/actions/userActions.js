@@ -44,15 +44,28 @@ const authenticate = createAsyncThunk("authenticate", async () => {
 
 const sign_out = createAsyncThunk("sign_out", async () => {
   try {
-    axios.post("http://localhost:3000/api/users/logout").then((response) => {
-      localStorage.removeItem("token");
-      console.log(response);
-    });
+    let token = localStorage.getItem("token");
+    let authorization = { headers: { Authorization: `Bearer ${token}` } };
+    let data = await axios.post(
+      "http://localhost:3000/api/users/logout",
+      null,
+      authorization
+    );
+
+    localStorage.removeItem("token");
+    console.log("logged out");
+    return {
+      user: {},
+      token: "",
+    };
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
+    return {
+      user: {},
+      token: "",
+    };
   }
 });
-
 const userActions = {
   sign_in,
   authenticate,

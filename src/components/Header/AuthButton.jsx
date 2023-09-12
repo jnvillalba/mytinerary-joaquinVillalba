@@ -23,17 +23,11 @@ function AuthButton() {
   }, [isLoggedIn]);
 
   const handleLogout = async () => {
-    localStorage.removeItem("token");
-    setIsLoggedIn(false);
-    navigate("/");
-
-    // Llama a la acción 'sign_out'
-    try {
-      await dispatch(userActions.sign_out());
-    } catch (error) {
-      console.log(error.message);
-    }
+      dispatch(userActions.sign_out());
+      setIsLoggedIn(false);
+      navigate("/");
   };
+  
 
   return (
     <div>
