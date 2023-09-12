@@ -1,18 +1,29 @@
-import React, { useRef } from "react";
+import React from "react";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux"
+import { useDispatch } from "react-redux";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 import SignInStepBottom from "./SignInStepBottom";
 import userActions from "../../store/actions/userActions";
+
 const SignIn = () => {
-  const emailInputRef = useRef();
-  const passwordInputRef = useRef();
   const dispatch = useDispatch();
-  const handleSignIn = () => {
-  
-    const email = emailInputRef.current.value
-    const password = passwordInputRef.current.value
-    dispatch(userActions.sign_in({ email, password }));
+
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(6, "The password must be at least 6 characters")
+      .required("Email is required"),
+  });
+
+  const initialValues = {
+    email: "",
+    password: "",
+  };
+
+  const handleSubmit = (values) => {
+    dispatch(userActions.sign_in(values));
   };
 
   return (
@@ -38,36 +49,51 @@ const SignIn = () => {
           </div>
 
           <div className="right-side-form pb-16">
-            <div className="form-inputs relative mb-5">
-              <label className="bg-white text-gray-600">Email</label>
-              <input
-                id="emailInput"
-                type="email"
-                className="w-full px-1 py-2 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
-                ref={emailInputRef}
-              />
-            </div>
+            <Formik
+              initialValues={initialValues}
+              validationSchema={validationSchema}
+              onSubmit={(values) => handleSubmit(values)}
+            >
+              <Form>
+                <div className="form-inputs relative mb-5">
+                  <label className="bg-white text-gray-600">Email</label>
+                  <Field
+                    type="email"
+                    name="email"
+                    className="w-full px-1 py-2 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                  />
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    className="text-red-500"
+                  />
+                </div>
 
-            <div className="form-inputs relative mb-5">
-              <label className="bg-white text-gray-600">Password</label>
-              <input
-                id="passwordInput"
-                type="password"
-                className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
-                ref={passwordInputRef}
-              />
-            </div>
+                <div className="form-inputs relative mb-5">
+                  <label className="bg-white text-gray-600">Password</label>
+                  <Field
+                    type="password"
+                    name="password"
+                    className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    className="text-red-500"
+                  />
+                </div>
 
-            <div className="submit-button pt-8 flex justify-end">
-              <Link to="/cities">
-                <input
-                  type="submit"
-                  className="btn-prima submit-button-input"
-                  onClick={() => handleSignIn()}
-                  value={"Continue"}
-                />
-              </Link>
-            </div>
+                <div className="submit-button pt-8 flex justify-end">
+                  <Link
+                    to="/cities"
+                    type="submit"
+                    className="btn-prima submit-button-input"
+                  >
+                    Continue
+                  </Link>
+                </div>
+              </Form>
+            </Formik>
             <SignInStepBottom />
           </div>
         </div>
