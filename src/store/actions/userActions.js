@@ -46,6 +46,7 @@ const sign_out = createAsyncThunk("sign_out", async () => {
     try{
         axios.post("http://localhost:3000/api/users/logout")
         .then((response)=>{
+            localStorage.removeItem("token")
             console.log(response);
         })
     }catch(error){
@@ -54,7 +55,7 @@ const sign_out = createAsyncThunk("sign_out", async () => {
 })
 
 const userActions = {
-  sign_in,authenticate
+  sign_in,authenticate,sign_out
 };
 
 export default userActions;
