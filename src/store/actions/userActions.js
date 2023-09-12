@@ -11,6 +11,7 @@ const sign_in = createAsyncThunk("sign_in", async (payload) => {
       })
       .then((response) => {
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         console.log("logged in");
         return response.data.user;
       });
@@ -31,6 +32,7 @@ const authenticate = createAsyncThunk("authenticate", async () => {
       .then((response) => {
         console.log("authenticated");
         localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         return response.data.user;
       });
 
@@ -53,10 +55,12 @@ const sign_out = createAsyncThunk("sign_out", async () => {
     );
 
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     console.log("logged out");
+    console.log();
     return {
       user: {},
-      token: "",
+      isLogged: false,
     };
   } catch (error) {
     console.log(error);
@@ -67,23 +71,23 @@ const sign_out = createAsyncThunk("sign_out", async () => {
   }
 });
 
- const register_user = createAsyncThunk("sign_out", async (userData) => {
+const register_user = createAsyncThunk("sign_out", async (userData) => {
   try {
-    axios.post("http://localhost:3000/api/users/register", userData)
+    axios
+      .post("http://localhost:3000/api/users/register", userData)
       .then((response) => {
         console.log("User created:", response);
-      })
-    } catch (error) {
-      console.log(error);
-    }
+      });
+  } catch (error) {
+    console.log(error);
   }
-);
+});
 
 const userActions = {
   sign_in,
   authenticate,
   sign_out,
-  register_user
+  register_user,
 };
 
 export default userActions;

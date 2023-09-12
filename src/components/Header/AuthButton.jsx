@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserIcon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import userActions from "../../store/actions/userActions";
 
 function AuthButton() {
@@ -10,7 +10,7 @@ function AuthButton() {
   const [userData, setUserData] = useState({});
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const dataStore = useSelector((store) => store.userReducer.user);
   useEffect(() => {
     const token = localStorage.getItem("token");
     const data = localStorage.getItem("user");
@@ -20,12 +20,14 @@ function AuthButton() {
     if (data) {
       setUserData(JSON.parse(data));
     }
+    console.log(isLoggedIn,dataStore)
+
   }, [isLoggedIn]);
 
   const handleLogout = async () => {
       dispatch(userActions.sign_out());
       setIsLoggedIn(false);
-      navigate("/");
+      navigate("/sign-in");
   };
   
 
@@ -38,6 +40,7 @@ function AuthButton() {
             className="h-5 w-5 flex-none"
             alt="User Avatar"
           />
+         
           Logout
         </button>
       ) : (

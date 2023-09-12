@@ -61,7 +61,7 @@ const Header = ({ textColor }) => {
             </li>
           </ul>
         </div>
-        <AuthButton />
+        
       </div>
     </div>
   );

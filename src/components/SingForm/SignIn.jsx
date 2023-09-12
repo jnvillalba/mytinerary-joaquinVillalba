@@ -59,7 +59,7 @@ const SignIn = () => {
             </div>
 
             <div className="submit-button pt-8 flex justify-end">
-              <Link to="/">
+              <Link to="/cities">
                 <input
                   type="submit"
                   className="btn-prima submit-button-input"

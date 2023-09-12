@@ -6,6 +6,7 @@ import { Carousel } from "react-bootstrap";
 import { Carousel as Carousel3D } from "react-3dm-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import citiesActions from "../../store/actions/citiesActions";
+import AuthButton from "../Header/AuthButton";
 const Hero = ({ background }) => {
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -72,13 +73,13 @@ const Hero = ({ background }) => {
               With an easy-to-use interface and a host of itinerary options,
               planning your next trip has never been easier.
             </p>
-            <button className="btn btn-prima my-4">View More</button>
+            <Link to="/cities" className="btn call-to-action">
+            Call to action
+          </Link>
           </div>
         </div>
         <div className="flex justify-center items-center pt-8 lg:pt-6">
-          <Link to="/cities" className="btn call-to-action">
-            Call to action
-          </Link>
+          <AuthButton />
         </div>
       </section>
 
