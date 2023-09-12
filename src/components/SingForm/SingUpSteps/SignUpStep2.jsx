@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CountrySelect from "../CountrySelect/CountrySelect";
-const SignUpStep2 = ({ setCurrentStep }) => {
+
+const SignUpStep2 = ({ setCurrentStep, formData, handleFormChange }) => {
   return (
     <>
       <div className="right-side-top">
@@ -13,18 +14,22 @@ const SignUpStep2 = ({ setCurrentStep }) => {
           <h6>Sign up with email</h6>
           <p>
             Already have an account?{""}
-            <Link className="sign-in">Sign in</Link>
+            <Link to="/sign-in" className="sign-in">
+              Sign in
+            </Link>
           </p>
         </div>
 
         <div className="right-side-form pb-16">
-          <div className="right-side-form-step2 ">
+          <div className="right-side-form-step2">
             <div className="form-inputs relative mb-5">
               <label className="bg-white text-gray-600">First Name</label>
               <input
                 id="firstNameInput"
                 type="text"
                 className="w-full px-2 py-2 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                value={formData.firstName}
+                onChange={(e) => handleFormChange("firstName", e.target.value)}
               />
             </div>
 
@@ -34,15 +39,19 @@ const SignUpStep2 = ({ setCurrentStep }) => {
                 id="lastNameInput"
                 type="text"
                 className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                value={formData.lastName}
+                onChange={(e) => handleFormChange("lastName", e.target.value)}
               />
             </div>
           </div>
-          <div className="right-side-form-step2 ">
+          <div className="right-side-form-step2">
             <div className="form-inputs relative mb-5">
               <label className="bg-white text-gray-600">Month</label>
               <select
                 id="monthInput"
                 className="w-full py-2 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                value={formData.month}
+                onChange={(e) => handleFormChange("month", e.target.value)}
               >
                 <option value="01">January</option>
                 <option value="02">February</option>
@@ -65,6 +74,8 @@ const SignUpStep2 = ({ setCurrentStep }) => {
                 id="yearInput"
                 type="number"
                 className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+                value={formData.year}
+                onChange={(e) => handleFormChange("year", e.target.value)}
               />
             </div>
           </div>
@@ -74,12 +85,21 @@ const SignUpStep2 = ({ setCurrentStep }) => {
               id="photoInput"
               type="text"
               className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+              value={formData.photo}
+              onChange={(e) => handleFormChange("photo", e.target.value)}
             />
           </div>
 
           <CountrySelect />
           <div className="flex items-center">
-            <input type="checkbox" className="mr-2 checkbox" />
+            <input
+              type="checkbox"
+              className="mr-2 checkbox"
+              checked={formData.contactViaEmail}
+              onChange={(e) =>
+                handleFormChange("contactViaEmail", e.target.checked)
+              }
+            />
             <span className="checkText">Please contact me via email</span>
           </div>
           <div className="termsAgreement">
@@ -109,7 +129,7 @@ const SignUpStep2 = ({ setCurrentStep }) => {
               <input
                 type="submit"
                 className="btn-prima submit-button-input"
-                onClick={() => setCurrentStep}
+                onClick={() => setCurrentStep()}
                 value={"Create Account"}
               />
             </Link>

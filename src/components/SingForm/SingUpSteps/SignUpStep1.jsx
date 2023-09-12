@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const SignUpStep1 = ({ setCurrentStep }) => {
+
+const SignUpStep1 = ({ setCurrentStep, formData, handleFormChange }) => {
   return (
     <>
       <div className="right-side-top">
@@ -53,6 +54,8 @@ const SignUpStep1 = ({ setCurrentStep }) => {
               id="emailInput"
               type="email"
               className="w-full px-1 py-2 border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+              value={formData.email}
+              onChange={(e) => handleFormChange("email", e.target.value)}
             />
           </div>
 
@@ -62,6 +65,8 @@ const SignUpStep1 = ({ setCurrentStep }) => {
               id="passwordInput"
               type="password"
               className="px-1 py-2 w-full border-b border-gray-400 focus:border-indigo-900 focus:outline-none bg-transparent"
+              value={formData.password}
+              onChange={(e) => handleFormChange("password", e.target.value)}
             />
           </div>
 
