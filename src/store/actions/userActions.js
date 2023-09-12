@@ -34,28 +34,29 @@ const authenticate = createAsyncThunk("authenticate", async () => {
         return response.data.user;
       });
 
-      return{
-        user: user
-      }
+    return {
+      user: user,
+    };
   } catch (error) {
     console.log(error);
   }
 });
 
 const sign_out = createAsyncThunk("sign_out", async () => {
-    try{
-        axios.post("http://localhost:3000/api/users/logout")
-        .then((response)=>{
-            localStorage.removeItem("token")
-            console.log(response);
-        })
-    }catch(error){
-        console.log(error.message);
-    }
-})
+  try {
+    axios.post("http://localhost:3000/api/users/logout").then((response) => {
+      localStorage.removeItem("token");
+      console.log(response);
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 const userActions = {
-  sign_in,authenticate,sign_out
+  sign_in,
+  authenticate,
+  sign_out,
 };
 
 export default userActions;

@@ -1,30 +1,18 @@
 import React, { useRef } from "react";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useDispatch } from "react-redux"
 import SignInStepBottom from "./SignInStepBottom";
+import userActions from "../../store/actions/userActions";
 const SignIn = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
+  const dispatch = useDispatch();
   const handleSignIn = () => {
-    if (emailInputRef.current && passwordInputRef.current) {
-      axios
-        .post("http://localhost:3000/api/users/login", {
-          email: emailInputRef.current.value,
-          password: passwordInputRef.current.value,
-        })
-        .then((response) => {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("user", JSON.stringify(response.data.user));
-
-        })
-        .catch((error) => {
-          error.response.data.message.forEach((message) =>
-            console.log(message)
-          );
-        });
-    }
+  
+    const email = emailInputRef.current.value
+    const password = passwordInputRef.current.value
+    dispatch(userActions.sign_in({ email, password }));
   };
 
   return (
