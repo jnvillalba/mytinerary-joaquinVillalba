@@ -1,6 +1,6 @@
 import React from "react";
 import "./SignUp.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
@@ -9,7 +9,7 @@ import userActions from "../../store/actions/userActions";
 
 const SignIn = () => {
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
@@ -22,8 +22,9 @@ const SignIn = () => {
     password: "",
   };
 
-  const handleSubmit = (values) => {
+  const handleSubmit = (values) => {console.log(values);
     dispatch(userActions.sign_in(values));
+    navigate("/cities");
   };
 
   return (
@@ -84,13 +85,13 @@ const SignIn = () => {
                 </div>
 
                 <div className="submit-button pt-8 flex justify-end">
-                  <Link
-                    to="/cities"
+                  <button
+                    
                     type="submit"
                     className="btn-prima submit-button-input"
                   >
                     Continue
-                  </Link>
+                  </button>
                 </div>
               </Form>
             </Formik>
