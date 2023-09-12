@@ -5,6 +5,9 @@ import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import { RouterProvider,createBrowserRouter } from 'react-router-dom'
 import CityDetailsPage from "./pages/CityDetailsPage";
+import { useEffect } from "react";
+import userActions from "./store/actions/userActions";
+import { useDispatch } from "react-redux";
 const router = createBrowserRouter([
   { path:'/', element: <HomePage /> },
   { path:'/sign-up', element: <SignUpPage/> },
@@ -16,6 +19,13 @@ const router = createBrowserRouter([
 ])
 
 function App() {
+
+  const dispath = useDispatch()
+
+  useEffect(() => {
+     dispath(userActions.authenticate())
+  },[])
+
   return (
     <>
       <RouterProvider router={router}/>
