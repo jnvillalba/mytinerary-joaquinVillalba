@@ -3,6 +3,7 @@ import axios from "axios";
 
 const sign_in = createAsyncThunk("sign_in", async (payload) => {
   try {
+    console.log(payload);
     let { email, password } = payload;
     const user = await axios
       .post("http://localhost:3000/api/users/login", {

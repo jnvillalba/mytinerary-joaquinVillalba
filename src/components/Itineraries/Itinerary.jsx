@@ -8,7 +8,7 @@ const Itinerary = ({ itinerary }) => {
   const toggleAccordion = () => {
     setIsAccordionOpen(!isAccordionOpen);
   };
-
+console.log(itinerary)
   return (
     <div className="card bg-base-100 m-5 shadow-xl sm:w-1/2 md:w-1/3 lg:w-1/4 h-[400px]"> 
       <figure>
@@ -54,7 +54,11 @@ const Itinerary = ({ itinerary }) => {
           </button>
           {isAccordionOpen && (
             <div className="mt-2">
-              <p>Activities and Comments Under Construction</p>
+              {itinerary.comments ? (
+                <p>{itinerary.comments.map((comment) => comment.text)}</p>
+              ) : (
+                <p>No comments available.</p>
+              )}
             </div>
           )}
         </div>

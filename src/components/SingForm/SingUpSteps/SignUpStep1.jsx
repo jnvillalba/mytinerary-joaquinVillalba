@@ -1,8 +1,11 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import userActions from "../../../store/actions/userActions";
+import { GoogleLogin } from "@react-oauth/google";
+import jwtDecode from "jwt-decode";
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email address")
@@ -11,6 +14,8 @@ const validationSchema = Yup.object().shape({
 });
 
 const SignUpStep1 = ({ setCurrentStep, formData, handleFormChange }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: formData.email,
@@ -27,6 +32,26 @@ const SignUpStep1 = ({ setCurrentStep, formData, handleFormChange }) => {
     formik.setFieldValue(field, value, true);
   };
 
+  const signUpWithGoogle = (credentialResponse) => {
+    const dataUser = jwtDecode(credentialResponse.credential);
+
+    const body = {
+      email: dataUser.email,
+      name: dataUser.name,
+      lastName: dataUser.family_name,
+      photo: dataUser.picture,
+      password: dataUser.sub,
+      country: "Argetina",
+    };
+    try {
+      dispatch(userActions.register_user(body));
+      alert("Register successfully");
+      navigate("/sign-in");
+    } catch (e) {
+      alert("Register Error: " + e);
+    }
+  };
+
   return (
     <>
       <div className="right-side-top">
@@ -35,12 +60,13 @@ const SignUpStep1 = ({ setCurrentStep, formData, handleFormChange }) => {
           Create account
         </div>
         <div className="singup-socials">
-          <button className="btn btn-circle btn-outline">
-            <img src="/i-google.svg" alt="fb-logo" />
-          </button>
-          <button className="btn btn-circle">
-            <img src="/i-fb.svg" alt="fb-logo" />
-          </button>
+        <GoogleLogin
+          onSuccess={signUpWithGoogle}
+          text="signup_with"
+          onError={() => {
+            console.log("Login Failed");
+          }}
+        />
         </div>
 
         <div className=" w-full h-9 py-4 justify-between items-center gap-2.5 inline-flex">

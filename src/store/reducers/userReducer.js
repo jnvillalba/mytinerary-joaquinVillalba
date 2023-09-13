@@ -12,7 +12,11 @@ const initialState = {
 const userReducer = createReducer(initialState, (builder) => {
   return builder
     .addCase(userActions.sign_in.fulfilled, (state, action) => {
-      return { user: action.payload.user,isLoggedIn: true };
+      let userData = {
+        user: action.payload.user ?? null,
+        token: action.payload.token ?? null,
+      }
+      return { ...state, ...userData };
     })
     .addCase(userActions.authenticate.fulfilled, (state, action) => {
       return { user: action.payload.user,isLoggedIn: true };

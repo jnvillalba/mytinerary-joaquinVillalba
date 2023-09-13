@@ -1,6 +1,30 @@
+import { GoogleLogin } from "@react-oauth/google";
 import React from "react";
-
+import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import userActions from "../../store/actions/userActions";
 const SignInStepBottom = () => {
+  const dispatch = useDispatch();
+  const signInWithGoogle = (credentialResponse) => {
+    const dataUser = jwtDecode(credentialResponse.credential);
+    const body = {
+      email: dataUser.email,
+      password: dataUser.sub,
+    };
+
+    dispatch(userActions.sign_in(body))
+      .then((response) => {
+        console.log(response.payload);
+        if (response.payload.success) {
+          navigate("/cities");
+        }
+        alert("Login successfully");
+      })
+      .catch((error) => {
+        alert("Login Error: " + error);
+        console.log(error);
+      });
+  };
   return (
     <>
       <div className=" w-full h-9 py-6 justify-between items-center gap-2.5 inline-flex">
@@ -20,20 +44,16 @@ const SignInStepBottom = () => {
         </svg>
         <div className="w-48 h-px opacity-50 border border-zinc-900 border-opacity-60"></div>
       </div>
-      <div className="singin-socials flex flex-col gap-1.5 ">
-        <button className="btn btn-circle btn-outline w-full">
-          <img src="/i-google.svg" alt="fb-logo" />
-          <p>Sign in with Google</p>
-        </button>
-        <button className="btn btn-circle w-full bg-blue-600 rounded-full justify-center items-center gap-2.5 inline-flex">
-          <div className="flex items-center gap-2.5">
-            <img src="/i-fb.svg" alt="fb-logo" className="w-6 h-6 " />
-            <p className="text-white text-baseleading-7 hover:text-blue-600">
-              Continue with Facebook
-            </p>
-          </div>
-        </button>
-      </div>
+      
+      <GoogleLogin 
+        size={"medium"}
+          onSuccess={signInWithGoogle}
+          onError={() => {
+            alert("Login Failed");
+          }}
+        />
+        
+      
     </>
   );
 };
