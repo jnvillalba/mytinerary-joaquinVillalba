@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SignUp.css";
 import SignUpStep1 from "./SingUpSteps/SignUpStep1";
 import SignUpStep2 from "./SingUpSteps/SignUpStep2";
 import userActions from "../../store/actions/userActions";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 const SignUp = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [token, setToken] = useState(localStorage.getItem("token"))
+
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     email: "",
@@ -15,6 +19,17 @@ const SignUp = () => {
     photo: "",
     country: "",
   });
+
+
+  const redirection = () => {
+        if(token){
+            navigate("/cities")
+        }
+    }
+
+    useEffect(()=>{
+        redirection()
+    },[token])
   const handleFormChange = (field, value) => {
     setFormData({
       ...formData,

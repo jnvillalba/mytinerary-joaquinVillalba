@@ -20,16 +20,15 @@ function AuthButton() {
     if (data) {
       setUserData(JSON.parse(data));
     }
-    console.log(isLoggedIn,dataStore)
-
+    console.log(isLoggedIn, dataStore);
   }, [isLoggedIn]);
 
   const handleLogout = async () => {
-      dispatch(userActions.sign_out());
-      setIsLoggedIn(false);
-      navigate("/sign-in");
+    dispatch(userActions.sign_out());
+    setIsLoggedIn(false);
+    localStorage.removeItem("token");
+    navigate("/sign-in");
   };
-  
 
   return (
     <div>
@@ -40,7 +39,6 @@ function AuthButton() {
             className="h-5 w-5 flex-none"
             alt="User Avatar"
           />
-         
           Logout
         </button>
       ) : (

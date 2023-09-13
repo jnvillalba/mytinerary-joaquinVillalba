@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./SignUp.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import SignInStepBottom from "./SignInStepBottom";
 import userActions from "../../store/actions/userActions";
 
 const SignIn = () => {
+  const [token, setToken] = useState(localStorage.getItem("token"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const validationSchema = Yup.object().shape({
@@ -22,7 +23,18 @@ const SignIn = () => {
     password: "",
   };
 
-  const handleSubmit = (values) => {console.log(values);
+  const redirection = () => {
+    if (token) {
+      navigate("/cities");
+    }
+  };
+
+  useEffect(() => {
+    redirection();
+  }, [token]);
+
+  const handleSubmit = (values) => {
+    console.log(values);
     dispatch(userActions.sign_in(values));
     navigate("/cities");
   };
@@ -86,7 +98,6 @@ const SignIn = () => {
 
                 <div className="submit-button pt-8 flex justify-end">
                   <button
-                    
                     type="submit"
                     className="btn-prima submit-button-input"
                   >
