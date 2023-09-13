@@ -1,32 +1,36 @@
 import React, { useState, useEffect } from "react";
 import "./Hero.css";
 import { Parallax } from "react-parallax";
-import { Link,useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import { Carousel as Carousel3D } from "react-3dm-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import citiesActions from "../../store/actions/citiesActions";
 import AuthButton from "../Header/AuthButton";
 const Hero = ({ background }) => {
-  const navigate = useNavigate()
+  const [carouselCities, setCarouselCities] = useState([]);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const citiesData = useSelector((store) => store.citiesReducer.cities);
   useEffect(() => {
     dispatch(citiesActions.get_cities())
       .unwrap()
+      .then((response) => {
+        console.log(response);
+        setCarouselCities(response.cities);
+      })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-    
   const onTitleClickHandler = (card) => {
     console.log("clicked", card);
-    navigate('/cities/city/' + card.id);
+    navigate("/cities/city/" + card.id);
   };
 
   const citiesDataCarousel = () => {
-    const limitedData = citiesData.slice(0, 12);
+    const limitedData = carouselCities.slice(0, 12);
     return limitedData.map((city) => ({
       id: city._id,
       title: city.name,
@@ -34,14 +38,17 @@ const Hero = ({ background }) => {
       image: city.image,
     }));
   };
-  
+
   const groupSize = 4;
   const citiesDataLength = citiesDataCarousel().length;
-  const groupedCities = Array.from({ length: Math.ceil(citiesDataLength / groupSize) }, (_, index) => {
-    const start = index * groupSize;
-    return citiesDataCarousel().slice(start, start + groupSize);
-  });
-  
+  const groupedCities = Array.from(
+    { length: Math.ceil(citiesDataLength / groupSize) },
+    (_, index) => {
+      const start = index * groupSize;
+      return citiesDataCarousel().slice(start, start + groupSize);
+    }
+  );
+
   const carouselItems = groupedCities.map((group, index) => (
     <Carousel.Item key={index}>
       <Carousel3D
@@ -74,8 +81,8 @@ const Hero = ({ background }) => {
               planning your next trip has never been easier.
             </p>
             <Link to="/cities" className="btn call-to-action">
-            Call to action
-          </Link>
+              Call to action
+            </Link>
           </div>
         </div>
         <div className="flex justify-center items-center pt-8 lg:pt-6">
@@ -89,7 +96,7 @@ const Hero = ({ background }) => {
             Popular Mytineraries
           </h2>
         </div>
-       {/* <Carousel data-bs-theme="dark">{carouselItems}</Carousel> */}
+        {<Carousel data-bs-theme="dark">{carouselItems}</Carousel>}
       </Parallax>
     </div>
   );
