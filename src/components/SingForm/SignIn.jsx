@@ -37,7 +37,6 @@ const SignIn = () => {
 
     dispatch(userActions.sign_in(values))
       .then((response) => {
-        console.log("response",response.error );
         if (!response.error) {
           navigate("/cities");
         }

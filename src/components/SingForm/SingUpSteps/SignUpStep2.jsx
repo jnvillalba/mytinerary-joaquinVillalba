@@ -105,15 +105,13 @@ const SignUpStep2 = ({ handleRegister, formData, handleFormChange }) => {
             />
 
             <div className="submit-button pt-8 flex justify-end">
-              <Link to="/sign-in">
-                <input
-                  type="submit"
-                  className="btn-prima submit-button-input"
-                  value={"Create Account"}
-                  disabled={!formik.isValid}
-                  onClick={() => handleRegister()}
-                />
-              </Link>
+              <input
+                type="submit"
+                className="btn-prima submit-button-input"
+                value={"Create Account"}
+                disabled={!formik.isValid}
+                onClick={() => handleRegister()}
+              />
             </div>
           </form>
         </div>

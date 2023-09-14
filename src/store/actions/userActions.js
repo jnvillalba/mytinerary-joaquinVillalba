@@ -23,7 +23,6 @@ const sign_in = createAsyncThunk(
         position: "top-end",
         icon: "success",
         title: "Logged in",
-        
       });
 
       return response.data.user;
@@ -92,17 +91,41 @@ const sign_out = createAsyncThunk("sign_out", async () => {
   }
 });
 
-const register_user = createAsyncThunk("sign_out", async (userData) => {
-  try {
-    axios
-      .post("http://localhost:3000/api/users/register", userData)
-      .then((response) => {
-        console.log("User created:", response);
+export const register_user = createAsyncThunk(
+  "sign_out",
+  async (userData, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/users/register",
+        userData
+      );
+      Swal.fire({
+        icon: "success",
+        title: "User created",
       });
-  } catch (error) {
-    console.log(error);
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        const errorMsgs = error.response.data.message;
+        Swal.fire({
+          icon: "error",
+          title: "register Error",
+          text: errorMsgs,
+        });
+        return rejectWithValue(
+          errorMsgs || "An error occurred during registration."
+        );
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Network Error",
+          text: "There was a network error. Please try again later.",
+        });
+        return rejectWithValue("Network error occurred.");
+      }
+    }
   }
-});
+);
 
 const userActions = {
   sign_in,

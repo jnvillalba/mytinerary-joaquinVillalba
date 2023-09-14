@@ -40,8 +40,14 @@ const SignUp = () => {
   };
 
   const handleRegister = () => {
-    console.log(formData);
-    dispatch(userActions.register_user(formData));
+    dispatch(userActions.register_user(formData)).then((response) => {
+      if (!response.error) {
+        navigate("/sign-in");
+      } else {
+        setCurrentStep(1)
+      }
+    })
+    
   };
   return (
     <div className="singForm__container overflow-hidden px-5 lg:px-20 xl:px-32 py-5">
