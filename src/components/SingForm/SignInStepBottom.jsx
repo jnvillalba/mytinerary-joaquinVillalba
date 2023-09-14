@@ -13,17 +13,6 @@ const SignInStepBottom = () => {
     };
 
     dispatch(userActions.sign_in(body))
-      .then((response) => {
-        console.log(response.payload);
-        if (response.payload.success) {
-          navigate("/cities");
-        }
-        alert("Login successfully");
-      })
-      .catch((error) => {
-        alert("Login Error: " + error);
-        console.log(error);
-      });
   };
   return (
     <>

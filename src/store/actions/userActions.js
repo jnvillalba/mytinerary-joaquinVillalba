@@ -1,25 +1,45 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const sign_in = createAsyncThunk("sign_in", async (payload) => {
-  try {
-    console.log(payload);
-    let { email, password } = payload;
-    const user = await axios
-      .post("http://localhost:3000/api/users/login", {
-        email: email,
-        password: password,
-      })
-      .then((response) => {
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
-        console.log("logged in");
-        return response.data.user;
+const sign_in = createAsyncThunk(
+  "sign_in",
+  async (payload, { rejectWithValue }) => {
+    try {
+      let { email, password } = payload;
+      const response = await axios.post(
+        "http://localhost:3000/api/users/login",
+        {
+          email: email,
+          password: password,
+        }
+      );
+
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Logged in",
+        
       });
-  } catch (error) {
-    error.response.data.message.forEach((message) => console.log(message));
+
+      return response.data.user;
+    } catch (error) {
+      let errorMsgs = error.response.data.message;
+      Swal.fire({
+        icon: "error",
+        title: "Logged Error",
+        text: errorMsgs,
+      });
+      return rejectWithValue(
+        error.message || "An error occurred during login."
+      );
+    }
   }
-});
+);
 
 const authenticate = createAsyncThunk("authenticate", async () => {
   try {

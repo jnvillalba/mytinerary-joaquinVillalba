@@ -34,9 +34,16 @@ const SignIn = () => {
   }, [token]);
 
   const handleSubmit = (values) => {
-    console.log(values);
-    dispatch(userActions.sign_in(values));
-    navigate("/cities");
+
+    dispatch(userActions.sign_in(values))
+      .then((response) => {
+        console.log("response",response.error );
+        if (!response.error) {
+          navigate("/cities");
+        }
+      })
+      
+
   };
 
   return (
