@@ -16,7 +16,6 @@ const Hero = ({ background }) => {
     dispatch(citiesActions.get_cities())
       .unwrap()
       .then((response) => {
-        console.log(response);
         setCarouselCities(response.cities);
       })
       .catch((error) => {
@@ -25,7 +24,6 @@ const Hero = ({ background }) => {
   }, []);
 
   const onTitleClickHandler = (card) => {
-    console.log("clicked", card);
     navigate("/cities/city/" + card.id);
   };
 

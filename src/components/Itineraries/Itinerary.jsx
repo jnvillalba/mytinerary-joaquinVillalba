@@ -8,7 +8,6 @@ const Itinerary = ({ itinerary }) => {
   const toggleAccordion = () => {
     setIsAccordionOpen(!isAccordionOpen);
   };
-console.log(itinerary)
   return (
     <div className="card bg-base-100 m-5 shadow-xl sm:w-1/2 md:w-1/3 lg:w-1/4 h-[400px]"> 
       <figure>

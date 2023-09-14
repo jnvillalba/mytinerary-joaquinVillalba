@@ -20,7 +20,6 @@ function AuthButton() {
     if (data) {
       setUserData(JSON.parse(data));
     }
-    console.log(isLoggedIn, dataStore);
   }, [isLoggedIn]);
 
   const handleLogout = async () => {
