@@ -3,8 +3,10 @@ import React from "react";
 import jwtDecode from "jwt-decode";
 import { useDispatch } from "react-redux";
 import userActions from "../../store/actions/userActions";
+import { useNavigate } from "react-router-dom";
 const SignInStepBottom = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const signInWithGoogle = (credentialResponse) => {
     const dataUser = jwtDecode(credentialResponse.credential);
     const body = {
@@ -12,7 +14,11 @@ const SignInStepBottom = () => {
       password: dataUser.sub,
     };
 
-    dispatch(userActions.sign_in(body))
+    dispatch(userActions.sign_in(body)).then((response) => {
+      if (response.meta.requestStatus == "fulfilled") {
+        navigate("/cities");
+      }
+    });
   };
   return (
     <>
@@ -33,16 +39,14 @@ const SignInStepBottom = () => {
         </svg>
         <div className="w-48 h-px opacity-50 border border-zinc-900 border-opacity-60"></div>
       </div>
-      
-      <GoogleLogin 
+
+      <GoogleLogin
         size={"medium"}
-          onSuccess={signInWithGoogle}
-          onError={() => {
-            alert("Login Failed");
-          }}
-        />
-        
-      
+        onSuccess={signInWithGoogle}
+        onError={() => {
+          alert("Login Failed");
+        }}
+      />
     </>
   );
 };
