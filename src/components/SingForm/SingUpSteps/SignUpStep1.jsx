@@ -43,13 +43,13 @@ const SignUpStep1 = ({ setCurrentStep, formData, handleFormChange }) => {
       password: dataUser.sub,
       country: "Argetina",
     };
-    try {
-      dispatch(userActions.register_user(body));
-      alert("Register successfully");
-      navigate("/sign-in");
-    } catch (e) {
-      alert("Register Error: " + e);
-    }
+    dispatch(userActions.register_user(body)).then((response) => {
+      if (!response.error) {
+        navigate("/sign-in");
+      } else {
+        navigate("/sign-up");
+      }
+    });
   };
 
   return (
@@ -60,13 +60,13 @@ const SignUpStep1 = ({ setCurrentStep, formData, handleFormChange }) => {
           Create account
         </div>
         <div className="singup-socials">
-        <GoogleLogin
-          onSuccess={signUpWithGoogle}
-          text="signup_with"
-          onError={() => {
-            console.log("Login Failed");
-          }}
-        />
+          <GoogleLogin
+            onSuccess={signUpWithGoogle}
+            text="signup_with"
+            onError={() => {
+              console.log("Login Failed");
+            }}
+          />
         </div>
 
         <div className=" w-full h-9 py-4 justify-between items-center gap-2.5 inline-flex">
