@@ -76,7 +76,12 @@ const sign_out = createAsyncThunk("sign_out", async () => {
 
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    console.log("logged out");
+    Swal.fire({
+      icon: "info",
+      title: "Logged out",
+      text: "You have been logged out successfully.",
+    });
+    
     console.log();
     return {
       user: {},
